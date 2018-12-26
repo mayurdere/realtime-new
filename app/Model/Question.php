@@ -1,14 +1,11 @@
 <?php
 
 namespace App\Model;
-namespace App\Model\User;
-
 
 use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
-{   
-
+{
     public function user(){
         return $this->belongsTo(User::class);
     }
@@ -23,13 +20,7 @@ class Question extends Model
     public function getRouteKeyName()  {
         return 'slug';
     }
-
-    //Storing a new question into the database
-    // protected $fillable = ['title', 'slug', 'body', 'category_id', 'user_id'];
-        protected $guarded = [];
-
-        // Exposing path instead of slug
-    // public function getPathAttribute(){
-    //     return asset("api/question/$this->slug");
-    }
+     //Storing a new question into the database
+     protected $fillable = ['title', 'slug', 'body', 'category_id', 'user_id'];
+    //protected $guarded = [];
 }

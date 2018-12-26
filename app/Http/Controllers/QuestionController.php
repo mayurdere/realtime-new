@@ -1,13 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Model\Question; 
 
-namespace App\Model\Question\Controller;
+use App\Model\Question;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-//use App\Http\Resources\QuestionResource;
-//use Symfony\Component\HttpFoundation\Response;
 
 class QuestionController extends Controller
 {
@@ -18,6 +15,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
+        
         return Question::latest()->get();
     }
 
@@ -31,10 +29,10 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {   
-        // auth()->user()->question()->create($request->all());  //Authorised User Id
-        Question::create($request->all());
-        return response('Created', RESPONSE::HTTP_CREATED);
-
+        
+    // auth()->user()->question()->create($request->all());  //Authorised User Id
+     Question::create($request->all());
+     return response('Created', RESPONSE::HTTP_CREATED);
     }
 
     /**
@@ -80,6 +78,6 @@ class QuestionController extends Controller
     public function destroy(Question $question)
     {
         $question->delete();
-        return response('Deleted', Response::HTTP_NO_CONTENT);
+        return ('1');
     }
 }
