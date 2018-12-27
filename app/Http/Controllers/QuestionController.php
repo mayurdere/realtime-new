@@ -68,7 +68,8 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        //
+        $question->update($request->all());
+        return response('Updated');
     }
 
     /**
@@ -80,7 +81,7 @@ class QuestionController extends Controller
     public function destroy(Question $question)
     {
         $question->delete();
-        return ('Deleted');
+        return response('Deleted', 204); // 204: NO_CONTENT
     }
 
    
