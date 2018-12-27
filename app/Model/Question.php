@@ -2,7 +2,9 @@
 
 namespace App\Model;
 
+
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Question extends Model
 {
@@ -21,6 +23,12 @@ class Question extends Model
         return 'slug';
     }
      //Storing a new question into the database
-     protected $fillable = ['title', 'slug', 'body', 'category_id', 'user_id'];
-    //protected $guarded = [];
+     //protected $fillable = ['title', 'slug', 'body', 'category_id', 'user_id'];
+    protected $guarded = [];
+
+    //To convert slug into a path(includes domain name)
+    public function getPathAttribute()
+    {
+        return asset("api/question/$this->slug");
+    }
 }
