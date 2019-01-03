@@ -9,6 +9,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class LikeController extends Controller
 {
+    /**
+     * Create a new AuthController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('JWT');
+    }
     public function LikeIt(Reply $reply)
     {   
         $reply->like()->create([
