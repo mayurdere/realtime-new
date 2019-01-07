@@ -1,24 +1,26 @@
 <template>
-  <form>
+  
    
    <v-container>
-    <v-text-field
-      v-model="form.email"
-      label="E-mail"
-      type="email"
-      required
-    ></v-text-field>
-     <v-text-field
-      v-model="form.password"
-      type="password"
-      label="Password"
-      required
-    ></v-text-field>
+       <v-form @submit.prevent="login">
+                <v-text-field
+                v-model="form.email"
+                label="E-mail"
+                type="email"
+                required
+                ></v-text-field>
+                <v-text-field
+                v-model="form.password"
+                type="password"
+                label="Password"
+                required
+                ></v-text-field>
 
-    <v-btn color="green" type="submit">submit</v-btn>
-    <v-btn type="clear">clear</v-btn>
+                <v-btn color="green" type="submit">submit</v-btn>
+                <v-btn type="clear">clear</v-btn>
+       </v-form>
    </v-container>
-  </form>
+  
 </template>
 
 <script>
@@ -30,7 +32,15 @@ export default {
                 password:null
             }
         }
-    }
+    },
+
+    methods: {
+        login(){
+            axios.post('/api/auth/login',this.form)
+            .then(res => console.log(res.data)) 
+            .catch(error => console.log(error.response.data))
+        }
+    },
 }
 </script>
 
