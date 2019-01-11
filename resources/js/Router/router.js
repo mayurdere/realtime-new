@@ -13,8 +13,8 @@ const routes = [
   // 3. Create the router instance and pass the `routes` option
 const router = new VueRouter({
     routes, // short for `routes: routes`
-    hashbang : false,
-    mode : 'history'
+    hashbang : false, //to hide the # from url
+    mode : 'history' //to hide the # from url
   })
 
 
