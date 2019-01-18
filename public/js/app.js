@@ -1947,6 +1947,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1955,13 +1963,18 @@ __webpack_require__.r(__webpack_exports__);
         email: null,
         password: null,
         password_confirmation: null
-      }
+      },
+      errors: {}
     };
   },
   methods: {
     signup: function signup() {
+      var _this = this;
+
       axios.post('/api/auth/signup', this.form).then(function (res) {
         return User.responseAfterLogin(res);
+      }).catch(function (error) {
+        return _this.errors = error.response.data.errors;
       });
     }
   }
@@ -6316,7 +6329,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -37836,7 +37849,7 @@ var render = function() {
           _c(
             "router-link",
             { attrs: { to: "/signup" } },
-            [_c("v-btn", { attrs: { color: "blue" } }, [_vm._v("Signup")])],
+            [_c("v-btn", { attrs: { color: "blue" } }, [_vm._v("Sign up")])],
             1
           )
         ],
@@ -37877,7 +37890,7 @@ var render = function() {
           on: {
             submit: function($event) {
               $event.preventDefault()
-              return _vm.login($event)
+              return _vm.signup($event)
             }
           }
         },
@@ -37893,6 +37906,12 @@ var render = function() {
             }
           }),
           _vm._v(" "),
+          _vm.errors.name
+            ? _c("span", { staticClass: "red--text" }, [
+                _vm._v(_vm._s(_vm.errors.name[0]))
+              ])
+            : _vm._e(),
+          _vm._v(" "),
           _c("v-text-field", {
             attrs: { label: "E-mail", type: "email", required: "" },
             model: {
@@ -37904,6 +37923,12 @@ var render = function() {
             }
           }),
           _vm._v(" "),
+          _vm.errors.email
+            ? _c("span", { staticClass: "red--text" }, [
+                _vm._v(_vm._s(_vm.errors.email[0]))
+              ])
+            : _vm._e(),
+          _vm._v(" "),
           _c("v-text-field", {
             attrs: { type: "password", label: "Password", required: "" },
             model: {
@@ -37914,6 +37939,12 @@ var render = function() {
               expression: "form.password"
             }
           }),
+          _vm._v(" "),
+          _vm.errors.password
+            ? _c("span", { staticClass: "red--text" }, [
+                _vm._v(_vm._s(_vm.errors.password[0]))
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c("v-text-field", {
             attrs: { type: "password", label: "Password", required: "" },
@@ -37927,7 +37958,7 @@ var render = function() {
           }),
           _vm._v(" "),
           _c("v-btn", { attrs: { color: "green", type: "submit" } }, [
-            _vm._v("Sign Up")
+            _vm._v("\n             Sign Up\n             ")
           ]),
           _vm._v(" "),
           _c(

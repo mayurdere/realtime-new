@@ -18,7 +18,7 @@
 
                 <v-btn color="green" type="submit">submit</v-btn>
                 <router-link to="/signup">
-                    <v-btn color="blue">Signup</v-btn>
+                    <v-btn color="blue">Sign up</v-btn>
                 </router-link>
        </v-form>
    </v-container>
