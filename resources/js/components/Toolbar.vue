@@ -30,6 +30,12 @@ export default {
 
             ]
         }
+    },
+
+    created(){
+        EventBus.$on('logout', () => {
+            User.logout()
+        })   
     }
 }
 </script>

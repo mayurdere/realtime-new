@@ -16,7 +16,7 @@ Vue.use(Vuetify)
 import User from './Helpers/User'
 window.User = User 
 
-console.log(User.loggedIn())
+window.EventBus = new Vue(); //EventBus Event for logout
 
 /**
  * The following block of code may be used to automatically register your
