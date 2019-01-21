@@ -1894,10 +1894,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      questions: {}
+    };
+  },
   components: {
     question: _Question__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('/api/question').then(function (res) {
+      return _this.questions = res.data.data;
+    }).catch(function (error) {
+      return console.log(error.response.data);
+    });
   }
 });
 
@@ -1926,7 +1944,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['data'] //data passed to the forum.vue's <question> tag
+
+});
 
 /***/ }),
 
@@ -6435,7 +6460,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -6454,7 +6479,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -38070,7 +38095,17 @@ var render = function() {
       _c(
         "v-layout",
         [
-          _c("v-flex", { attrs: { xs8: "" } }, [_c("question")], 1),
+          _c(
+            "v-flex",
+            { attrs: { xs8: "" } },
+            _vm._l(_vm.questions, function(question) {
+              return _c("question", {
+                key: question.path,
+                attrs: { data: question }
+              })
+            }),
+            1
+          ),
           _vm._v("\n            Sidebar\n    ")
         ],
         1
@@ -38106,17 +38141,26 @@ var render = function() {
     [
       _c("v-card-title", { attrs: { "primary-title": "" } }, [
         _c("div", [
-          _c("h3", { staticClass: "headline mb-0" }, [
-            _vm._v("Question Title")
-          ]),
+          _c(
+            "h3",
+            { staticClass: "headline mb-0" },
+            [
+              _c("router-link", { attrs: { to: _vm.data.path } }, [
+                _vm._v(
+                  "\n              " + _vm._s(_vm.data.title) + "\n          "
+                )
+              ])
+            ],
+            1
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "grey--text" }, [
-            _vm._v("Posted 4 hours ago")
+            _vm._v(_vm._s(_vm.data.created_at))
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("v-card-text", [_vm._v("\n      Body\n  ")])
+      _c("v-card-text", [_vm._v("\n      " + _vm._s(_vm.data.body) + "\n  ")])
     ],
     1
   )

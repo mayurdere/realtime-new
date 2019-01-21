@@ -2,7 +2,11 @@
     <v-container>
         <v-layout>
             <v-flex xs8>
-                <question>
+                <question
+                v-for="question in questions"
+                :key="question.path"
+                :data=question
+                >
 
                 </question>
             </v-flex>
@@ -14,7 +18,17 @@
 <script>
 import question from './Question'
 export default {
-    components:{question}
+    data(){
+        return {
+            questions:{}
+        }
+    },
+    components:{question},
+    created(){
+        axios.get('/api/question')
+        .then(res => this.questions = res.data.data)
+        .catch(error => console.log(error.response.data))
+    }
 }
 </script>
 
