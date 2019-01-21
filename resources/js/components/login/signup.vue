@@ -59,6 +59,11 @@ export default {
             errors:{}
         }
     },
+    created(){
+        if(User.loggedIn()){
+            this.$router.push({name: 'forum'})
+        }
+    },
     methods: {
         signup(){
             axios.post('/api/auth/signup',this.form)

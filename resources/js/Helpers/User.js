@@ -27,7 +27,7 @@ class User {
     }
 
     loggedIn(){
-        return $this.hasToken();
+        return this.hasToken()
     }
 
     logout(){
