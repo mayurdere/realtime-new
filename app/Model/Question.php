@@ -29,6 +29,6 @@ class Question extends Model
     //To convert slug into a path(includes domain name)
     public function getPathAttribute()
     {
-        return "api/question/$this->slug";
+        return "/question/$this->slug";
     }
 }

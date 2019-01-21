@@ -7,6 +7,7 @@ import Login from '../components/login/Login'
 import Logout from '../components/login/Logout'
 import Signup from '../components/login/Signup'
 import Forum from '../components/forum/Forum'
+import Read from '../components/forum/read'
 
 //Defining Routes
 const routes = [
@@ -14,6 +15,7 @@ const routes = [
     { path: '/logout', component: Logout },
     { path: '/signup', component: Signup },
     { path: '/forum', component: Forum, name: 'forum'},
+    { path: '/question/:slug', component: Read, name: 'read'},
   ]
 
   // 3. Create the router instance and pass the `routes` option

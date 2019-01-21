@@ -7,7 +7,9 @@
                     {{data.title}}
                 </router-link>
             </h3>
-            <div class="grey--text">{{data.created_at}}</div>
+            <div class="grey--text">
+                {{data.user}} said {{data.created_at}}
+                </div>
           </div>
         </v-card-title>
         <v-card-text>
@@ -18,7 +20,7 @@
 
 <script>
 export default {
-    props:['data'] //data passed to the forum.vue's <question> tag
+    props:['data'] //data passed to the forum.vue's <question> tag (props means Question.vue s child and Forum.vue is parent)
 }
 </script>
 
