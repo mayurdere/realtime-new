@@ -5,11 +5,13 @@ Vue.use(VueRouter)
 
 import Login from '../components/login/Login'
 import Signup from '../components/login/Signup'
+import Forum from '../components/forum/Forum'
 
 //Defining Routes
 const routes = [
     { path: '/login', component: Login },
     { path: '/signup', component: Signup },
+    { path: '/forum', component: Forum, name: 'forum'},
   ]
 
   // 3. Create the router instance and pass the `routes` option
