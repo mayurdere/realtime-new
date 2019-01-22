@@ -5,12 +5,12 @@
                 <question
                 v-for="question in questions"
                 :key="question.path"
-                :data=question
-                >
+                :data=question 
+                > 
 
                 </question>
             </v-flex>
-                Sidebar
+                
         </v-layout>
     </v-container>
 </template>
