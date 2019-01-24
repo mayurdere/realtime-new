@@ -95490,7 +95490,10 @@ try {
 
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'; // For every axios request we pass the token
+
+var JwtToken = "Bearer ".concat(localStorage.getItem('token'));
+window.axios.defaults.headers.common['Authorization'] = JwtToken;
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just
