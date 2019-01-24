@@ -8,6 +8,14 @@ use App\User;
 
 class Question extends Model
 {
+    protected static function boot(){
+        parent::boot();
+
+        static::creating(function($question){
+            $question->slug = str_slug($question->title);  //Storing Question with userId and slug
+        });
+    }
+
     public function user(){
         return $this->belongsTo(User::class);
     }
