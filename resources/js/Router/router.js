@@ -8,6 +8,7 @@ import Logout from '../components/login/Logout'
 import Signup from '../components/login/Signup'
 import Forum from '../components/forum/Forum'
 import Read from '../components/forum/read'
+import Create from '../components/forum/create'
 
 //Defining Routes
 const routes = [
@@ -15,6 +16,7 @@ const routes = [
     { path: '/logout', component: Logout },
     { path: '/signup', component: Signup },
     { path: '/forum', component: Forum, name: 'forum'},
+    { path: '/ask', component: Create, name: 'create'},
     { path: '/question/:slug', component: Read, name: 'read'},
   ]
 
