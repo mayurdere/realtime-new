@@ -1987,7 +1987,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['data']
+  props: ['data'],
+  computed: {
+    body: function body() {
+      return md.parse(this.data.body);
+    }
+  }
 });
 
 /***/ }),
@@ -2054,7 +2059,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.post('/api/question', this.form).then(function (res) {
-        return console.log(res.data);
+        return _this2.$router.push(res.data.path);
       }).catch(function (error) {
         return _this2.errors = error.response.data.error;
       });
@@ -2082,6 +2087,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2089,7 +2095,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      question: {}
+      question: null
     };
   },
   created: function created() {
@@ -20608,7 +20614,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -20646,7 +20652,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -57031,7 +57037,7 @@ var render = function() {
             "v-card-title",
             [
               _c("div", [
-                _c("div", { staticClass: "headlne" }, [
+                _c("div", { staticClass: "headline" }, [
                   _vm._v(
                     "\n                " +
                       _vm._s(_vm.data.title) +
@@ -57055,7 +57061,7 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("v-card-text", { domProps: { innerHTML: _vm._s(_vm.data.body) } })
+          _c("v-card-text", { domProps: { innerHTML: _vm._s(_vm.body) } })
         ],
         1
       )
@@ -57169,7 +57175,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("show-question", { attrs: { data: _vm.question } })
+  return _vm.question
+    ? _c("show-question", { attrs: { data: _vm.question } })
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -95417,8 +95425,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_simplemde__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_simplemde__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var simplemde_dist_simplemde_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! simplemde/dist/simplemde.min.css */ "./node_modules/simplemde/dist/simplemde.min.css");
 /* harmony import */ var simplemde_dist_simplemde_min_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(simplemde_dist_simplemde_min_css__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _Helpers_User__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Helpers/User */ "./resources/js/Helpers/User.js");
-/* harmony import */ var _Router_router_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Router/router.js */ "./resources/js/Router/router.js");
+/* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! marked */ "./node_modules/marked/lib/marked.js");
+/* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(marked__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _Helpers_User__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Helpers/User */ "./resources/js/Helpers/User.js");
+/* harmony import */ var _Router_router_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Router/router.js */ "./resources/js/Router/router.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -95434,7 +95444,9 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuetify__WEBPACK_IMPORTED_MODULE_
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_simplemde__WEBPACK_IMPORTED_MODULE_2___default.a);
 
-window.User = _Helpers_User__WEBPACK_IMPORTED_MODULE_4__["default"];
+window.md = marked__WEBPACK_IMPORTED_MODULE_4___default.a;
+
+window.User = _Helpers_User__WEBPACK_IMPORTED_MODULE_5__["default"];
 window.EventBus = new vue__WEBPACK_IMPORTED_MODULE_0___default.a(); //EventBus Event for logout
 
 /**
@@ -95457,7 +95469,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('AppHome', __webpack_requir
 
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
-  router: _Router_router_js__WEBPACK_IMPORTED_MODULE_5__["default"]
+  router: _Router_router_js__WEBPACK_IMPORTED_MODULE_6__["default"]
 });
 
 /***/ }),

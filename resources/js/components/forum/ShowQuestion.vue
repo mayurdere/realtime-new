@@ -3,7 +3,7 @@
         <v-container fluid>
         <v-card-title>
             <div>
-                <div class="headlne">
+                <div class="headline">
                     {{data.title}}
                 </div>
                 <span class="grey--text">{{data.user}} said {{data.created_at}}</span>
@@ -12,15 +12,21 @@
             <v-btn color="teal">8 replies</v-btn>
         </v-card-title>
 
-        <v-card-text v-html="data.body">
+        <v-card-text v-html="body">
         </v-card-text>
         </v-container>
     </v-card>
 </template>
 
 <script>
+
 export default {
-    props:['data']
+    props:['data'],
+    computed:{
+        body(){
+            return md.parse(this.data.body)
+        }
+    }
 }
 </script>
 

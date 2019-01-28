@@ -43,9 +43,9 @@ class QuestionController extends Controller
         
       
     // $request['slug'] = str_slug($request->title); //Storing Question with UserId and Slug (Code added in Question model)
-    auth()->user()->question()->create($request->all()); //Authorised User Id
+    $question = auth()->user()->question()->create($request->all()); //Authorised User Id
     // Question::create($request->all());
-     return response('Created', RESPONSE::HTTP_CREATED);
+     return response(new QuestionResource($question), RESPONSE::HTTP_CREATED);
     }
 
     /**

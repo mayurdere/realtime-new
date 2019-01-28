@@ -1,6 +1,7 @@
 <template>
     <show-question 
     :data = question
+    v-if = "question"
     >
 
     </show-question>
@@ -12,7 +13,7 @@ export default {
     components:{ShowQuestion},
     data(){
         return{
-            question:{}
+            question:null
         }
     },
     created(){
